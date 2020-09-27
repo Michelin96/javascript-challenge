@@ -41,7 +41,6 @@ function runEnter () {
     // remove all sighting data from the table
     tbody.html("");
 
-    console.log(filteredData);
 
     // Create a new table of the filtered sighting data
     filteredData.forEach(sighting => {
