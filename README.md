@@ -1,7 +1,7 @@
 # javascript-challenge
 Filtering data from a table using a web page search field.
 
-#Synopsis and Usage
+# Synopsis and Usage
 
 The index.html file in UFO-level-1 builds a table from the array of objects in static\js\data.js using the javascript in static\js\app.js. 
 
