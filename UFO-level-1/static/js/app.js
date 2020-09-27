@@ -14,8 +14,6 @@ let filterButton = d3.select("#filter-btn"),
 tableData.forEach(sighting => {
     let row = tbody.append("tr");
     row.append("td").text(sighting.datetime);
-    console.log(sighting.datetime);
-
     row.append("td").text(sighting.city);
     row.append("td").text(sighting.state);
     row.append("td").text(sighting.country);
@@ -24,16 +22,8 @@ tableData.forEach(sighting => {
     row.append("td").text(sighting.comments);
 })
 
-// Data array object for reference
-//     datetime: "1/1/2010",
-//     city: "benton",
-//     state: "ar",
-//     country: "us",
-//     shape: "circle",
-//     durationMinutes: "5 mins.",
-//     comments: "4 bright green circles high in the sky going in circles then one bright green light at my front door."
 
-// Complete the event handler function for the form
+// Complete the event handler function for the search form
 function runEnter() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
@@ -45,9 +35,13 @@ function runEnter() {
   
     console.log(inputValue);
 
+    let filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+
+    console.log(filteredData);
+
 };
 
 
 // Create event handlers 
-button.on("click", runEnter);
+filterButton.on("click", runEnter);
 form.on("submit",runEnter);
