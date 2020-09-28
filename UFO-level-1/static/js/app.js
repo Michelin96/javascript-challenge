@@ -36,12 +36,8 @@ function runEnter () {
     // Filter the data based on the input entry
     let filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
 
-    let table = d3.select("table");
-
     // remove all sighting data from the table
     tbody.html("");
-
-    console.log(filteredData);
 
     // Create a new table of the filtered sighting data
     filteredData.forEach(sighting => {
