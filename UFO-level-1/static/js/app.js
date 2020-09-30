@@ -29,10 +29,12 @@ function runEnter () {
     d3.event.preventDefault();
     // Select the input entry and get the raw HTML node
     let inputEntry = d3.select("#datetime");
-  
+    console.log(inputEntry);
+   
     // Get the value property of the input entry, e.g. the date
     let inputValue = inputEntry.property("value");
-
+    console.log(inputValue);
+    
     // Filter the data based on the input entry
     let filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
 
