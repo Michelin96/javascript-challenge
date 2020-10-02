@@ -10,6 +10,8 @@ let table = d3.select("table");
 let filterButton = d3.select("#filter-btn"),
     form = d3.select("#form");
 
+let searchList = []
+
 // Make a table of all the sighting data
 tableData.forEach(sighting => {
     let row = tbody.append("tr");
@@ -22,16 +24,6 @@ tableData.forEach(sighting => {
     row.append("td").text(sighting.comments);
 });
 
-// Select the input entry and get the raw HTML node
-let searchItems = document.querySelectorAll("input");
-console.log(searchItems);
-
-
-// Convert searchItems NodeList to an array
-// var searchArray = Array.from(searchItems);
-var searchArray = Array.prototype.slice.call(searchItems); 
-
-console.log(searchArray);
 
 // for (let i = 0; i < 5; i++) {
 //     // Runs 5 times, with values of i 0 through 4.
@@ -46,34 +38,50 @@ console.log(searchArray);
 // console.log(searchList);
 
 
-// searchItems.forEach(item => {
-//     console.log(item);
+// searchArray.forEach(entry => {
+//     var entryValue = entry.property("value");
+//     console.log(entryValue);
+
 // });
 
 
 // Complete the event handler function for the search form
-const runEnter = () => {
+function runEnter () {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
-    // // Iterate over a NodeList
-    // for (const item of Object.entries(searchItems)){
-    //     let inputValue = item.property("value");
-    //     searchList.push(inputValue);
+    // // Select the input entry and get the raw HTML node
+    // let searchItems = document.querySelectorAll("input");
+    // console.log(searchItems);
+
+    // // Convert searchItems NodeList to an array tip from https://jsfiddle.net/
+    // var searchArray = Array.prototype.slice.call(searchItems); 
+
+    // console.log(searchArray);
+
+    // // // Iterate over a NodeList
+    // for (const item of Object.entries(searchArray)){
+    //     // let inputValue = item.property("value");
+    //     console.log(item[1].property("value"));
+    //     // searchList.push(item);
     // };
     // console.log(searchList);
-    // // Get the value property of the input entry, e.g. the date
-    // let dateValue = dateEntry.property("value"),
-    //     cityValue = cityEntry.property("value"),
-    //     stateValue = stateEntry.property("value"),
-    //     countryValue = countryEntry.property("value"),
-    //     shapeValue = shapeEntry.property("value");
 
-    // console.log(dateValue);
-    // console.log(cityValue);
-    // console.log(stateValue);
-    // console.log(countryValue);
-    // console.log(shapeValue);
+    let dateEntry = d3.select("#datetime");
+    let cityEntry = d3.select("#city");
+    let stateEntry = d3.select("#state");
+    let countryEntry = d3.select("#country");
+    let shapeEntry = d3.select("#shape");
+
+    // Get the value property of the input entry, e.g. the date and push to a list
+    searchList.push(dateEntry.property("value"));
+    searchList.push(cityEntry.property("value"));
+    searchList.push(stateEntry.property("value"));
+    searchList.push(countryEntry.property("value"));
+    searchList.push(shapeEntry.property("value"));
+
+    console.log(searchList);
+
 
     // Filter the data based on the input entry
     let filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
