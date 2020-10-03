@@ -11,4 +11,4 @@ When opened in a web browser, index.html displays the whole table of UFO sightin
 
 ## UFO-level-2 (Attempted but Not functional)
 
-This index.html file upgrades the search funtion to include all the data columns in the table. 
+This index.html file upgrades the search function to include all the data columns in the table. 
