@@ -10,9 +10,9 @@ let table = d3.select("table");
 let filterButton = d3.select("#filter-btn"),
     form = d3.select("#form");
 
-let searchList = []
+let searchList = [];
 
-let filteredData = []
+let filteredData = [];
 
 // Make a table of all the sighting data
 tableData.forEach(sighting => {
@@ -54,30 +54,29 @@ function runEnter () {
     console.log(objectValues);
 
     // Check each sighting object key value and compare it with each item in the search list
-    forEach value in objectValues {
-        forEach searchItem in searchList{
-            // If the object key value matches an item in the search list 
-            // append the object to the filtered list
+    objectValues.forEach((value) => searchList.forEach((searchItem) => {
+            // If a value matches a search item, push that object to the filtered data list
             if (value === searchItem){
-                filteredData.append(objectValues);
-            };
-        };
-    };
+                filteredData.push(tableData[0]);
+            }
+        }    
+    ));
+    console.log(filteredData)
 
-//     // remove all sighting data from the table
-//     tbody.html("");
+    // remove all sighting data from the table
+    tbody.html("");
 
-//     // Create a new table of the filtered sighting data array of objects
-//     filteredData.forEach(sighting => {
-//         let row = tbody.append("tr");
-//         row.append("td").text(sighting.datetime);
-//         row.append("td").text(sighting.city);
-//         row.append("td").text(sighting.state);
-//         row.append("td").text(sighting.country);
-//         row.append("td").text(sighting.shape);
-//         row.append("td").text(sighting.durationMinutes);
-//         row.append("td").text(sighting.comments);
-//     });
+    // Create a new table of the filtered sighting data array of objects
+    filteredData.forEach(sighting => {
+        let row = tbody.append("tr");
+        row.append("td").text(sighting.datetime);
+        row.append("td").text(sighting.city);
+        row.append("td").text(sighting.state);
+        row.append("td").text(sighting.country);
+        row.append("td").text(sighting.shape);
+        row.append("td").text(sighting.durationMinutes);
+        row.append("td").text(sighting.comments);
+    });
 };
 
 // Create event handlers 
