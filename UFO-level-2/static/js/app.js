@@ -24,64 +24,28 @@ tableData.forEach(sighting => {
     row.append("td").text(sighting.comments);
 });
 
-
-// for (let i = 0; i < 5; i++) {
-//     // Runs 5 times, with values of i 0 through 4.
-//     console.log(searchItems[i]);
-//   };
-
-// console.log(listItem);
-
- // Iterate over a NodeList
-// let searchList = searchItems.values();
-    // let inputValue = searchItems.property("value");
-// console.log(searchList);
-
-
-// searchArray.forEach(entry => {
-//     var entryValue = entry.property("value");
-//     console.log(entryValue);
-
-// });
-
-
 // Complete the event handler function for the search form
 function runEnter () {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
-    // // Select the input entry and get the raw HTML node
-    // let searchItems = document.querySelectorAll("input");
-    // console.log(searchItems);
+     //Select the input entry and get the raw HTML node
+     let dateEntry = d3.select("#datetime");
+     let cityEntry = d3.select("#city");
+     let stateEntry = d3.select("#state");
+     let countryEntry = d3.select("#country");
+     let shapeEntry = d3.select("#shape");
+ 
+     // Get the value property of the input entry, e.g. the date and push to a list
+     searchList.push(dateEntry.property("value"));
+     searchList.push(cityEntry.property("value"));
+     searchList.push(stateEntry.property("value"));
+     searchList.push(countryEntry.property("value"));
+     searchList.push(shapeEntry.property("value"));
+ 
+     console.log(searchList);
 
-    // // Convert searchItems NodeList to an array tip from https://jsfiddle.net/
-    // var searchArray = Array.prototype.slice.call(searchItems); 
 
-    // console.log(searchArray);
-
-    // // Iterate over a NodeList
-    // for (const item of searchArray){
-    //     searchList.push(item.property("value"));
-    //     // console.log(searchList);
-    //     // searchList.push(inputValue);
-    // };
-    // console.log(searchList);
-
-    //Select the input entry and get the raw HTML node
-    let dateEntry = d3.select("#datetime");
-    let cityEntry = d3.select("#city");
-    let stateEntry = d3.select("#state");
-    let countryEntry = d3.select("#country");
-    let shapeEntry = d3.select("#shape");
-
-    // Get the value property of the input entry, e.g. the date and push to a list
-    searchList.push(dateEntry.property("value"));
-    searchList.push(cityEntry.property("value"));
-    searchList.push(stateEntry.property("value"));
-    searchList.push(countryEntry.property("value"));
-    searchList.push(shapeEntry.property("value"));
-
-    console.log(searchList);
     // for each data objects key value compare to list item
 
     // for (item in tableData) {
@@ -107,6 +71,7 @@ function runEnter () {
             };
         };
     });
+
     // let filteredData = tableData.filter( sighting => Object.values(tableData) {
     //     for item in tableData
 
