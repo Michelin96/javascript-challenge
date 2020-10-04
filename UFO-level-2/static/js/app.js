@@ -48,10 +48,8 @@ function runEnter () {
     // Show the list of the input entries
     console.log(searchList);
 
-    // Get the values of each key in the object (row of sighting data)
-
     for (i = 0; i < tableData.length; i++){
-
+        // Get the values of each key in the object (row of sighting data)
         let objectValues = Object.values(tableData[i]);
 
         console.log(objectValues);
