@@ -49,9 +49,9 @@ function runEnter () {
     console.log(searchList);
 
     // Get the values of each key in the object (row of sighting data)
-    // for (item in tableData) {
-    //     let values = Object.values(tableData)
-    // }
+    let objectValues = Object.values(tableData[0]);
+
+    console.log(objectValues);
 
     // Check each sighting object key value and compare it with each item in the search list
 
