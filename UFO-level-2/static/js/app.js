@@ -12,6 +12,8 @@ let filterButton = d3.select("#filter-btn"),
 
 let searchList = []
 
+let filteredData = []
+
 // Make a table of all the sighting data
 tableData.forEach(sighting => {
     let row = tbody.append("tr");
@@ -30,61 +32,36 @@ function runEnter () {
     d3.event.preventDefault();
 
      //Select the input entry and get the raw HTML node
-     let dateEntry = d3.select("#datetime");
-     let cityEntry = d3.select("#city");
-     let stateEntry = d3.select("#state");
-     let countryEntry = d3.select("#country");
-     let shapeEntry = d3.select("#shape");
+    let dateEntry = d3.select("#datetime");
+    let cityEntry = d3.select("#city");
+    let stateEntry = d3.select("#state");
+    let countryEntry = d3.select("#country");
+    let shapeEntry = d3.select("#shape");
  
      // Get the value property of the input entry, e.g. the date and push to a list
-     searchList.push(dateEntry.property("value"));
-     searchList.push(cityEntry.property("value"));
-     searchList.push(stateEntry.property("value"));
-     searchList.push(countryEntry.property("value"));
-     searchList.push(shapeEntry.property("value"));
- 
-     console.log(searchList);
+    searchList.push(dateEntry.property("value"));
+    searchList.push(cityEntry.property("value"));
+    searchList.push(stateEntry.property("value"));
+    searchList.push(countryEntry.property("value"));
+    searchList.push(shapeEntry.property("value"));
 
+    // Show the list of the input entries
+    console.log(searchList);
 
-    // for each data objects key value compare to list item
-
+    // Get the values of each key in the object (row of sighting data)
     // for (item in tableData) {
     //     let values = Object.values(tableData)
     // }
-    // May need to use index here and line us
-    // 
-    let filteredData = tableData.filter(sighting => {
 
-        for (i = 0; i < tableData.length; i++){
-            let dataValues = Object.values(tableData[i]);
-            for (item in dataValues){
-                    console.log(item)
+    // Check each sighting object key value and compare it with each item in the search list
 
-                    // let row = tbody.append("tr");
-                    // row.append("td").text(sighting.datetime);
-                    // row.append("td").text(sighting.city);
-                    // row.append("td").text(sighting.state);
-                    // row.append("td").text(sighting.country);
-                    // row.append("td").text(sighting.shape);
-                    // row.append("td").text(sighting.durationMinutes);
-                    // row.append("td").text(sighting.comments);
-            };
-        };
-    });
-
-    // let filteredData = tableData.filter( sighting => Object.values(tableData) {
-    //     for item in tableData
-
-    // })
-
-//     // Filter the data based on the input entry
-//     let filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+    // If the object key value matches an item in the search list
+            // append the object to the filtered list
 
 //     // remove all sighting data from the table
 //     tbody.html("");
 
-
-//     // Create a new table of the filtered sighting data
+//     // Create a new table of the filtered sighting data array of objects
 //     filteredData.forEach(sighting => {
 //         let row = tbody.append("tr");
 //         row.append("td").text(sighting.datetime);
@@ -95,7 +72,7 @@ function runEnter () {
 //         row.append("td").text(sighting.durationMinutes);
 //         row.append("td").text(sighting.comments);
 //     });
- };
+};
 
 // Create event handlers 
 filterButton.on("click", runEnter);
