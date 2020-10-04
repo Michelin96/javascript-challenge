@@ -13,7 +13,7 @@ When opened in a web browser, index.html displays the whole table of UFO sightin
 
 The index.html file search function was upgraded to include all the data columns in the table (except duration and comments). The multi search option is partially functional with the following known bugs:
 
-* The filer only works when clicking the button, not on "enter"
+* The filter only works when clicking the button, not on "enter"
 * A page refresh is required to try new filter options
 * Using CA in the State field also includes CA (Canada) from the Country Field
 
