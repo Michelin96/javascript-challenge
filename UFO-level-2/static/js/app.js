@@ -54,9 +54,15 @@ function runEnter () {
     console.log(objectValues);
 
     // Check each sighting object key value and compare it with each item in the search list
-
-    // If the object key value matches an item in the search list
+    forEach value in objectValues {
+        forEach searchItem in searchList{
+            // If the object key value matches an item in the search list 
             // append the object to the filtered list
+            if (value === searchItem){
+                filteredData.append(objectValues);
+            };
+        };
+    };
 
 //     // remove all sighting data from the table
 //     tbody.html("");
