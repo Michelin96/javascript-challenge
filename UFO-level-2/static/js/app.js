@@ -49,18 +49,22 @@ function runEnter () {
     console.log(searchList);
 
     // Get the values of each key in the object (row of sighting data)
-    let objectValues = Object.values(tableData[0]);
 
-    console.log(objectValues);
+    for (i = 0; i < tableData.length; i++){
 
-    // Check each sighting object key value and compare it with each item in the search list
-    objectValues.forEach((value) => searchList.forEach((searchItem) => {
-            // If a value matches a search item, push that object to the filtered data list
-            if (value === searchItem){
-                filteredData.push(tableData[0]);
-            }
-        }    
-    ));
+        let objectValues = Object.values(tableData[i]);
+
+        console.log(objectValues);
+
+        // Check each sighting object key value and compare it with each item in the search list
+        objectValues.forEach((value) => searchList.forEach((searchItem) => {
+                // If a value matches a search item, push that object to the filtered data list
+                if (value === searchItem){
+                    filteredData.push(tableData[i]);
+                }
+            }    
+        ));
+    }
     console.log(filteredData)
 
     // remove all sighting data from the table
