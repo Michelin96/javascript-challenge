@@ -59,14 +59,15 @@ function runEnter () {
 
     // console.log(searchArray);
 
-    // // // Iterate over a NodeList
-    // for (const item of Object.entries(searchArray)){
-    //     // let inputValue = item.property("value");
-    //     console.log(item[1].property("value"));
-    //     // searchList.push(item);
+    // // Iterate over a NodeList
+    // for (const item of searchArray){
+    //     searchList.push(item.property("value"));
+    //     // console.log(searchList);
+    //     // searchList.push(inputValue);
     // };
     // console.log(searchList);
 
+    //Select the input entry and get the raw HTML node
     let dateEntry = d3.select("#datetime");
     let cityEntry = d3.select("#city");
     let stateEntry = d3.select("#state");
@@ -81,30 +82,55 @@ function runEnter () {
     searchList.push(shapeEntry.property("value"));
 
     console.log(searchList);
+    // for each data objects key value compare to list item
 
+    // for (item in tableData) {
+    //     let values = Object.values(tableData)
+    // }
+    // May need to use index here and line us
+    // 
+    let filteredData = tableData.filter(sighting => {
 
-    // Filter the data based on the input entry
-    let filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+        for (i = 0; i < tableData.length; i++){
+            let dataValues = Object.values(tableData[i]);
+            for (item in dataValues){
+                    console.log(item)
 
-    // remove all sighting data from the table
-    tbody.html("");
-
-// Put the search items in a list
-// Search each table object for any (or's) item in the list
-
-
-    // Create a new table of the filtered sighting data
-    filteredData.forEach(sighting => {
-        let row = tbody.append("tr");
-        row.append("td").text(sighting.datetime);
-        row.append("td").text(sighting.city);
-        row.append("td").text(sighting.state);
-        row.append("td").text(sighting.country);
-        row.append("td").text(sighting.shape);
-        row.append("td").text(sighting.durationMinutes);
-        row.append("td").text(sighting.comments);
+                    // let row = tbody.append("tr");
+                    // row.append("td").text(sighting.datetime);
+                    // row.append("td").text(sighting.city);
+                    // row.append("td").text(sighting.state);
+                    // row.append("td").text(sighting.country);
+                    // row.append("td").text(sighting.shape);
+                    // row.append("td").text(sighting.durationMinutes);
+                    // row.append("td").text(sighting.comments);
+            };
+        };
     });
-};
+    // let filteredData = tableData.filter( sighting => Object.values(tableData) {
+    //     for item in tableData
+
+    // })
+
+//     // Filter the data based on the input entry
+//     let filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+
+//     // remove all sighting data from the table
+//     tbody.html("");
+
+
+//     // Create a new table of the filtered sighting data
+//     filteredData.forEach(sighting => {
+//         let row = tbody.append("tr");
+//         row.append("td").text(sighting.datetime);
+//         row.append("td").text(sighting.city);
+//         row.append("td").text(sighting.state);
+//         row.append("td").text(sighting.country);
+//         row.append("td").text(sighting.shape);
+//         row.append("td").text(sighting.durationMinutes);
+//         row.append("td").text(sighting.comments);
+//     });
+ };
 
 // Create event handlers 
 filterButton.on("click", runEnter);
