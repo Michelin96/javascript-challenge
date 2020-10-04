@@ -10,10 +10,6 @@ let table = d3.select("table");
 let filterButton = d3.select("#filter-btn"),
     form = d3.select("#form");
 
-let searchList = [];
-
-let filteredData = [];
-
 // Make a table of all the sighting data
 tableData.forEach(sighting => {
     let row = tbody.append("tr");
@@ -30,6 +26,10 @@ tableData.forEach(sighting => {
 function runEnter () {
     // Prevent the page from refreshing
     d3.event.preventDefault();
+
+    let searchList = [];
+
+    let filteredData = [];
 
      //Select the input entry and get the raw HTML node
     let dateEntry = d3.select("#datetime");
